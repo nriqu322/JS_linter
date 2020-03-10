@@ -1,2 +1,1 @@
-#!/bin/bash
-./bin/main.rb
+irb ./bin/main.rb
