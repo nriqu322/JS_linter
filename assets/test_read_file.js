@@ -7,6 +7,6 @@ function isEven(num) {
   return num % 2 == 0;
 };
 
-function sum(x, y){
+function sum(x, y) {
   return x + y;
 };
