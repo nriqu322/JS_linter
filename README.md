@@ -1,57 +1,57 @@
-# Project Name
+# Capstone Project: Build a beginners linter
 
-> One paragraph statement about the project.
+> This is a simple linter for JavaScript files and informs about formatting errors.  
 
-![screenshot](./app_screenshot.png)
+![screenshot](./assets/linter_screenshot.png)
 
-Additional description about the project and its features.
+This takes a .js file and validates spacing, semicolons, opening and closing braces, spaces, correct names for indentifiers.
 
 ## Built With
-
-- Major languages,
-- frameworks,
-- technologies used
+- Ruby
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://repl.it/@nriqu322/JSlinter)
 
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
-To get a local copy up and running follow these simple example steps.
+**To run this project yo have to have this repo on your computer**
+To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
+- Rubocop
+- Colorize
 
 ### Setup
+Download or clone this repository to your machine.
 
-### Install
+* To clone, go to "Clone or Download" and click on Download ZIP and extract the files to a folder in your computer
+* To Download go to "Clone or Download" and copy the link then go to your terminal and write ``` git clone [insert link here without brackets] ```.
 
 ### Usage
+* Change the "test_read_file.js" to suit your needs
+  Then run the executable file in your terminal : ``` ./bin/main.rb ```
 
 ### Run tests
+* This is an example in the .js file
+```
+FirstName = 'John';
+last_Name = 'Doe';
 
-### Deployment
+fullName = firstName+ lastName; 
+```
+This will display a warning and a error after you run the excecutable file
+![warning](./assets/camelcase_screenshot.png)
+![error](./assets/spaces_screenshot.png)
 
+## Author
 
+👤 **Luis Saavedra**
 
-## Authors
-
-👤 **Author1**
-
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
-
-👤 **Author2**
-
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- Github: [@nriqu322](https://github.com/nriqu322)
+- Twitter: [@nriqu322](https://twitter.com/nriqu322)
+- Linkedin: [Luis Saavedra](https://linkedin.com/in/luis-saavedra-sanchez/)
 
 ## 🤝 Contributing
 
@@ -62,13 +62,3 @@ Feel free to check the [issues page](issues/).
 ## Show your support
 
 Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
-
-## 📝 License
-
-This project is [MIT](lic.url) licensed.
