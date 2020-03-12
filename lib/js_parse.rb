@@ -15,9 +15,11 @@ class JsParse
     end
   end
 
-  # def end_semicolon(line)
-  #   if .match(line)
-  # end
+  def end_semicolon(line, line_num)
+    if /^[^\n|\}|function](?:(?!;).)*$/.match(line)
+      puts 'ERROR: '.red + "line #{line_num}, missing semicolon at the end of line"
+    end
+  end
 
   def space_before_braces(line, line_num)
     if /\S\{/.match(line)
@@ -27,18 +29,18 @@ class JsParse
 
   def space_end_line(line, line_num)
     if /[\w]\s\s/.match(line)
-      puts  'ERROR: '.red + "line #{line_num}, check for double spaces."
+      puts 'ERROR: '.red + "line #{line_num}, check for double spaces."
     elsif /\s$/.match(line)
-      puts  'ERROR: '.red + "line #{line_num}, check for double spaces at the end of the line."
+      puts 'ERROR: '.red + "line #{line_num}, remove spaces at the end of the line."
     end
   end
 
   def check_braces
     diff = @open_brace - @close_brace
     if diff < 0
-      puts "ERROR: ".red + "Number of missing open braces : #{diff}."
+      puts 'ERROR: '.red + "Number of missing open braces : #{diff}."
     elsif diff > 0
-      puts "ERROR: ".red + "Number of missing closed braces : #{diff}."
+      puts 'ERROR: '.red + "Number of missing closed braces : #{diff}."
     end
   end
 
@@ -62,6 +64,7 @@ class JsParse
       space_before_braces(line, i + 1)
       count_pair_braces?(line, i + 1)
       space_end_line(line, i + 1)
+      end_semicolon(line, i +1)
     end
     check_braces
   end
