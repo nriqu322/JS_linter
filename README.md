@@ -2,7 +2,7 @@
 
 > This is a simple linter for JavaScript files and informs about formatting errors.  
 
-![screenshot](./assets/linter_screenshot.png)
+![screenshot](./assets/linter-screenshot.png)
 
 This takes a .js file and validates spacing, semicolons, opening and closing braces, spaces, correct names for indentifiers.
 
