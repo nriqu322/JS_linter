@@ -35,14 +35,14 @@ class JsParse
     end
   end
 
-  def space_end_line(line, line_num)
+  def space_in_line(line, line_num)
     if /[\w]\s\s/.match(line)
       puts 'ERROR: '.red + "line #{line_num}, check for double spaces."
       true
     end
   end
 
-  def space_in_line(line, line_num)
+  def space_end_line(line, line_num)
     if /\s$/.match(line)
       puts 'ERROR: '.red + "line #{line_num}, remove spaces at the end of the line."
       true

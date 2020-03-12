@@ -19,7 +19,7 @@ RSpec.describe JsParse do
 
   describe "#end_semicolon" do
     it 'check if and statement end with a semicolon' do
-      expect(js_parse.end_semicolon(file_data, 10)).to eql(true)
+      expect(js_parse.end_semicolon(file_data, 7)).to eql(true)
     end
   end
   
