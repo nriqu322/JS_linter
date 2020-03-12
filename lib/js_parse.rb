@@ -1,4 +1,5 @@
 require 'colorize'
+# rubocop : disable Style/GuardClause
 
 class JsParse
   def initialize(arr)
@@ -9,14 +10,14 @@ class JsParse
 
   def lowercase_names(line, line_num)
     if /^[A-Z]/.match(line)
-      puts 'WARNING: '.yellow + "line #{line_num}, camelCase is recommended for identifier names (variables and functions)."
+      puts 'WARNING: '.yellow + "line #{line_num}, camelCase is recommended for identifier names."
       true
     end
   end
 
   def underscore_names(line, line_num)
     if /_/.match(line)
-      puts 'WARNING: '.yellow + "line #{line_num}, camelCase is recommended for identifier names (variables and functions), avoid underscore."
+      puts 'WARNING: '.yellow + "line #{line_num}, avoid underscore in names, use camelCase."
       true
     end
   end
@@ -51,37 +52,35 @@ class JsParse
 
   def check_braces
     diff = @open_brace - @close_brace
-    false
-    if diff < 0
+    if diff.negative?
       puts 'ERROR: '.red + "Number of missing open braces : #{diff}."
       true
-    elsif diff > 0
+    elsif diff.psitive?
       puts 'ERROR: '.red + "Number of missing close braces : #{diff}."
       true
     end
   end
 
   def spaces_around(line, line_num)
-    if /\S\+|\+\S|\S\-|\-\S|\S\*|\*\S|\S\=|\=\S|\S\/|\/\S/ =~ line
-      puts 'ERROR: '.red + "line #{line_num}, expected spaces around operator." unless /\=\=\=|\=\=/ =~ line 
+    if %r{\S\+|\+\S|\S\-|\-\S|\S\*|\*\S|\S\=|\=\S|\S/|/\S} =~ line
+      puts 'ERROR: '.red + "line #{line_num}, expected spaces around operator." unless /\=\=\=|\=\=/ =~ line
       true
     end
   end
 
-  def count_pair_braces(line, line_num)
-    @open_brace +=1 if /\{/ =~ line
-    @close_brace += 1 if  /\}/ =~ line
+  def count_pair_braces(line)
+    @open_brace += 1 if /\{/ =~ line
+    @close_brace += 1 if /\}/ =~ line
   end
 
   def pass_lines
-    i = 0
-    for i in (0..@arr.size) do
+    (0..@arr.size).each do |i|
       line = @arr[i]
       spaces_around(line, i + 1)
       lowercase_names(line, i + 1)
       underscore_names(line, i + 1)
       space_before_braces(line, i + 1)
-      count_pair_braces(line, i + 1)
+      count_pair_braces(line)
       space_end_line(line, i + 1)
       space_in_line(line, i + 1)
       end_semicolon(line, i + 1)
@@ -89,3 +88,4 @@ class JsParse
     check_braces
   end
 end
+# rubocop : enable Style/GuardClause
