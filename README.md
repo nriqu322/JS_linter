@@ -9,11 +9,6 @@ This takes a .js file and validates spacing, semicolons, opening and closing bra
 ## Built With
 - Ruby
 
-## Live Demo
-
-[Live Demo Link](https://repl.it/@nriqu322/JSlinter)
-
-
 ## Getting Started
 
 **To run this project yo have to have this repo on your computer**
