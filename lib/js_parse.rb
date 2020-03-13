@@ -1,5 +1,4 @@
 require 'colorize'
-# rubocop : disable Style/GuardClause
 
 class JsParse
   attr_reader :arr
@@ -11,63 +10,62 @@ class JsParse
   end
 
   def lowercase_names?(line, line_num)
-    if /^[A-Z]/.match(line)
-      puts 'WARNING: '.yellow + "line #{line_num}, camelCase is recommended for identifier names."
-      true
-    end
+    return false unless /^[A-Z]/.match(line)
+
+    puts 'WARNING: '.yellow + "line #{line_num}, camelCase is recommended for identifier names." if /^[A-Z]/.match(line)
+    true
   end
 
   def underscore_names?(line, line_num)
-    if /_/.match(line)
-      puts 'WARNING: '.yellow + "line #{line_num}, avoid underscore in names, use camelCase."
-      true
-    end
+    return false unless /_/.match(line)
+
+    puts 'WARNING: '.yellow + "line #{line_num}, avoid underscore in names, use camelCase."
+    true
   end
 
   def missing_semicolon?(line, line_num)
-    if /^[^\n|\}|function](?:(?!;).)*$/.match(line)
-      puts 'ERROR: '.red + "line #{line_num}, missing semicolon at the end of line."
-      true
-    end
+    return false unless /^[^\n|\}|function](?:(?!;).)*$/.match(line)
+
+    puts 'ERROR: '.red + "line #{line_num}, missing semicolon at the end of line."
+    true
   end
 
   def space_before_braces?(line, line_num)
-    if /\S\{/.match(line)
-      puts 'ERROR: '.red + "line #{line_num}, missing space before open brace."
-      true
-    end
+    return false unless /\S\{/.match(line)
+
+    puts 'ERROR: '.red + "line #{line_num}, missing space before open brace."
+    true
   end
 
   def space_in_line?(line, line_num)
-    if /.+[\w]\s\s.+/.match(line)
-      puts 'ERROR: '.red + "line #{line_num}, check for double spaces."
-      true
-    end
+    return false unless /.+[\w]\s\s.+/.match(line)
+
+    puts 'ERROR: '.red + "line #{line_num}, check for double spaces."
+    true
   end
 
   def space_end_line?(line, line_num)
-    if /\s$/.match(line)
-      puts 'ERROR: '.red + "line #{line_num}, remove spaces at the end of the line."
-      true
-    end
+    return false unless /\s$/.match(line)
+
+    puts 'ERROR: '.red + "line #{line_num}, remove spaces at the end of the line."
+    true
   end
 
   def check_braces
-    diff = @open_brace - @close_brace
+    diff = (@open_brace - @close_brace).abs
     if diff.negative?
       puts 'ERROR: '.red + "Number of missing open braces : #{diff}."
-      true
     elsif diff.positive?
       puts 'ERROR: '.red + "Number of missing close braces : #{diff}."
-      true
     end
+    true
   end
 
   def spaces_around?(line, line_num)
-    if %r{\S\+|\+\S|\S\-|\-\S|\S\*|\*\S|\S\=|\=\S|\S/|/\S} =~ line
-      puts 'ERROR: '.red + "line #{line_num}, expected spaces around operator." unless /\=\=\=|\=\=/ =~ line
-      true
-    end
+    return false unless %r{\S\+|\+\S|\S\-|\-\S|\S\*|\*\S|\S\=|\=\S|\S/|/\S} =~ line
+
+    puts 'ERROR: '.red + "line #{line_num}, expected spaces around operator." unless /\=\=\=|\=\=/ =~ line
+    true
   end
 
   def count_pair_braces(line)
@@ -90,4 +88,3 @@ class JsParse
     check_braces
   end
 end
-# rubocop : enable Style/GuardClause

@@ -1,17 +1,29 @@
 require_relative '../lib/read_file.rb'
 require_relative '../lib/js_parse.rb'
 
-# def capture_stdout(&blk)
-#   old = $stdout
-#   $stdout = fake = StringIO.new
-#   blk.call
-#   fake.string
-# ensure
-#   $stdout = old
-# end
-
 RSpec.describe JsParse do
-  let(:file_data) { "ReadFile.new.get_file_data('./assets/test_read_file.js')" }
+  # rubocop : disable Style/BlockDelimiters
+  let(:file_data) {
+    %(
+FirstName = 'John';
+last_Name = 'Doe';
+
+fullName = firstName+ lastName;
+
+var x = 5, y = 7;
+console.log\(x + y\);
+
+function isEven\(num\)\{
+  return  num % 2 == 0;
+
+
+function sum\(x, y\) \{
+  return x + y
+\}
+    )
+  }
+  # rubocop : enable Style/BlockDelimiters
+
   let(:js_parse) { JsParse.new(file_data) }
 
   describe '#lowercase_names?' do
@@ -42,10 +54,6 @@ RSpec.describe JsParse do
     it 'check if there is a space before a brace' do
       expect(my_method.call).to eql(true)
     end
-
-    it 'check if there is a space before a brace' do
-      expect(&my_method).to output('ERROR: line 9, missing space before open brace.').to_stdout
-    end
   end
 
   describe '#space_end_line?' do
@@ -57,10 +65,6 @@ RSpec.describe JsParse do
 
     it 'check if there is space at the end of a line' do
       expect(my_method.call).to eql(true)
-    end
-
-    it 'check if there is space at the end of a line' do
-      expect(&my_method).to output(true).to_stdout
     end
   end
 
@@ -74,9 +78,17 @@ RSpec.describe JsParse do
     it 'check if there is double space in a line' do
       expect(my_method.call).to eql(true)
     end
+  end
 
-    it 'check if there is double space in a line' do
-      expect(&my_method).to output(true).to_stdout
+  describe '#spaces_around?' do
+    let(:my_method) do
+      proc do
+        js_parse.spaces_around?(file_data, 4)
+      end
+    end
+
+    it 'check if there is an space before and after an operator' do
+      expect(my_method.call).to eql(true)
     end
   end
 
@@ -88,22 +100,6 @@ RSpec.describe JsParse do
     end
 
     it 'check if there is a missing openning or closing brace' do
-      expect(my_method.call).to eql(true)
-    end
-
-    it 'stdout check if there is a missing openning or closing brace' do
-      expect(&my_method).to output(true).to_stdout
-    end
-  end
-
-  describe '#spaces_around?' do
-    let(:my_method) do
-      proc do
-        js_parse.spaces_around?(file_data, 4)
-      end
-    end
-
-    it 'check if there is an space before and after an operator' do
       expect(my_method.call).to eql(true)
     end
   end
