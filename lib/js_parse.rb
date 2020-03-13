@@ -68,10 +68,14 @@ class JsParse
     true
   end
 
+  private
+
   def count_pair_braces(line)
     @open_brace += 1 if /\{/ =~ line
     @close_brace += 1 if /\}/ =~ line
   end
+
+  public
 
   def pass_lines
     (0..arr.size).each do |i|
