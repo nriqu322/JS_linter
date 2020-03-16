@@ -1,0 +1,1 @@
+irb ./bin/main.rb
