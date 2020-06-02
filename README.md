@@ -6,6 +6,12 @@
 
 This takes a .js file and validates spacing, semicolons, opening and closing braces, spaces, correct names for indentifiers.
 
+## Future Features
+
+- Check indentation
+- Check quotes
+- Check for reserved words
+
 ## Built With
 - Ruby
 
