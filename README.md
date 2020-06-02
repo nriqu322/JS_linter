@@ -11,7 +11,7 @@ This takes a .js file and validates spacing, semicolons, opening and closing bra
 
 ## Getting Started
 
-**To run this project yo have to have this repo on your computer**
+**To run this project you must have this repo on your computer**
 To get a local copy up and running follow these simple steps.
 
 This linter check the following standards in .js files: 
