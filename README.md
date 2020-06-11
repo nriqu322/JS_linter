@@ -32,7 +32,7 @@ This linter checks the following standards in .js files:
 ### Setup
 Download or clone this repository to your machine.
 
-* To clone, go to "Clone or Download" and click on Download ZIP and extract the files to a folder in your computer
+* To clone, go to "Clone or Download" and click on Download ZIP and extract the files to a folder in your computer.
 * To Download go to "Clone or Download" and copy the link then go to your terminal and write ``` git clone [insert link here without brackets] ```.
 
 ### Usage
@@ -47,15 +47,15 @@ last_Name = 'Doe';
 
 fullName = firstName+ lastName; 
 ```
-This will display a warning and a error after you run the excecutable file
+This will display a warning and a error after you run the excecutable file.
 ![warning](./assets/camelcase_screenshot.png)
 ![error](./assets/spaces_screenshot.png)
 
 ## Future Features
 
-- Check indentation
-- Check quotes
-- Check for reserved words
+- Check identation.
+- Check quotes.
+- Check for reserved words.
 
 ## Author
 
