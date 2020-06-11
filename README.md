@@ -6,13 +6,8 @@
 
 This takes a .js file and validates spacing, semicolons, opening and closing braces, spaces, correct names for indentifiers.
 
-## Future Features
-
-- Check indentation
-- Check quotes
-- Check for reserved words
-
 ## Built With
+
 - Ruby
 
 ## Getting Started
@@ -55,6 +50,12 @@ fullName = firstName+ lastName;
 This will display a warning and a error after you run the excecutable file
 ![warning](./assets/camelcase_screenshot.png)
 ![error](./assets/spaces_screenshot.png)
+
+## Future Features
+
+- Check indentation
+- Check quotes
+- Check for reserved words
 
 ## Author
 
