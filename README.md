@@ -4,7 +4,7 @@
 
 ![screenshot](./assets/linter-screenshot.png)
 
-This takes a .js file and validates spacing, semicolons, opening and closing braces, spaces, correct names for indentifiers.
+This takes a .js file and validates spacing, semicolons, opening and closing braces, spaces, correct names for identifiers.
 
 ## Built With
 
@@ -15,14 +15,14 @@ This takes a .js file and validates spacing, semicolons, opening and closing bra
 **To run this project you must have this repo on your computer**
 To get a local copy up and running follow these simple steps.
 
-This linter check the following standards in .js files: 
-* If find a capital letter in the indetifier names and recommend to use camelCase instead.
-* If find underscore in the indetifier names and recommend to use camelCase instead.
+This linter checks the following standards in .js files: 
+* Find a capital letter in the identifier names and recommend to use camelCase instead.
+* Find underscore in the identifier names and recommend to use camelCase instead.
 * If there is a semicolon at the end.
 * If there are spaces around operators.
 * If there is a space before opening brace.
-* If find a space at the end of the line, send a message to remove it.
-* If find a double space in line, send a message to use one space.
+* Find a space at the end of the line, send a message to remove it.
+* Find a double space in line, send a message to use one space.
 * And if there is a missing opening or closing brace.
 
 ### Prerequisites
